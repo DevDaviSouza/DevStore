@@ -16,7 +16,7 @@ export default function Index() {
                         
                         <div class="text-new-student">
                             <div class="bar-new-student"></div>
-                            <div class="text-new-student">Novo Aluno</div>
+                            <div class="text-new-student">Novo Produto</div>
                         </div>
 
                         <div class="input-new-student"> 
@@ -26,23 +26,43 @@ export default function Index() {
                                     <div class="input"> <input /> </div>  
                                 </div> 
                                 <div class="agp-input">
-                                    <div class="number-student"> Chamada: </div>  
+                                    <div class="number-student"> Categoria: </div>  
+                                    <div class="input"> <input /> </div> 
+                                </div>
+                                <div class="agp-input">
+                                    <div class="number-student"> Avaliação: </div>  
                                     <div class="input"> <input /> </div> 
                                 </div>
                             </div>
 
                             <div class="input-right">
                                 <div class="agp-input">
-                                    <div class="corse-student"> Curso: </div>  
+                                    <div class="corse-student"> Preço DE: </div>  
                                     <div class="input"> <input /> </div>  
                                 </div>
                                 <div class="agp-input">
-                                    <div class="class-student"> Turma: </div>  
+                                    <div class="class-student"> Preço POR: </div>  
+                                    <div class="input"> <input /> </div> 
+                                </div>
+                                <div class="agp-input">
+                                    <div class="number-student"> Estoque: </div>  
                                     <div class="input"> <input /> </div> 
                                 </div>
                             </div>
+
+                            
+                        </div>
+                        <div className="input-bottom">
+                                <div className="link-image"> Link Imagem: </div>
+                                <div className="input-large"> <input /></div>
+                        </div>
+
+                        <div className="text-area">
+                            <div className="descricao"> Descrição: </div>
+                            <textarea id="textarea" rows="10" cols="91"></textarea>
                             <div class="button-create"> <button> Cadastrar </button> </div>
                         </div>
+                        
                     </div>
 
                     <div class="student-registered-box">
@@ -55,10 +75,10 @@ export default function Index() {
                             <thead>
                                 <tr>
                                     <th> ID </th>
-                                    <th> Nome </th>
-                                    <th> Chamada </th>
-                                    <th> Turma </th>
-                                    <th> Curso </th>
+                                    <th> Produto </th>
+                                    <th> Categoria </th>
+                                    <th> Preço </th>
+                                    <th> Estoque </th>
                                     <th class="coluna-acao"> </th>
                                     <th class="coluna-acao"> </th>
                                 </tr>
@@ -67,10 +87,10 @@ export default function Index() {
                             <tbody>
                                 <tr>
                                     <td> 1 </td>
-                                    <td> Fulao da Silva Sauro</td>
-                                    <td> 15 </td>
-                                    <td> InfoX </td>
-                                    <td> Informática </td>
+                                    <td> Esfera do dragão</td>
+                                    <td> Acessórios </td>
+                                    <td> R$ 14,99 </td>
+                                    <td> 99 </td>
                                     <td> <button> <img src="/assets/images/edit.svg" alt="" /> </button> </td>
                                     <td> <button> <img src="/assets/images/trash.svg" alt="" /> </button> </td>
                                 </tr>

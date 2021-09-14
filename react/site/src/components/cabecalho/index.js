@@ -15,8 +15,8 @@ export default function Index() {
                 </div>
                 
                 <div class="box-image">
-                    <div class="refresh-button"> <button> <img src="/assets/images/refresh.svg" alt = "" />  </button> </div>
-                    <div class="left-button"> <button> <img src="/assets/images/log-out.svg" alt = "" />  </button> </div>
+                    <div class="refresh-button"> <img src="/assets/images/recarregar devstore.PNG" alt = "" />   </div>
+                    <div class="left-button"> <img src="/assets/images/sair devstore.PNG" alt = "" />   </div>
                 </div>
             </div>
             <div class="bottom-bar-right-header" />

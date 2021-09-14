@@ -24,22 +24,22 @@ const Container = styled.div`
 
 
 
-    .left-button button {
-        border-radius: 50%;
-        background-color: #986CDF;
+    .left-button img {
+       
+        
         width: 44px;
-        height: 44px;
-        border: none;
-        margin: .4em;
+        margin-left: 5px;
+        height: 48px;
+        
     }
 
-    .refresh-button button {
-        border-radius: 50%;
-        background-color: #986CDF;
+    .refresh-button img {
+       
+        
         width: 44px;
         height: 44px;
-        border: none;
-        margin: .4em;
+        margin-top: 2px;
+        margin-right: 7px;
         
     }
 

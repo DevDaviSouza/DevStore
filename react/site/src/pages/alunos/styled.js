@@ -17,7 +17,7 @@ const Container = styled.div`
     }
 
     .bar-new-student {
-        border: 3px solid #986CDF;
+        border: 3px solid #6CC3DF;
         border-radius: .5em;
         margin-right: .4em;
         background-color: #986CDF;
@@ -79,6 +79,7 @@ const Container = styled.div`
         width: 5.5em;
         padding-left: 1em;
         font-weight: 800;
+        margin-left: 5px;
     }
 
 
@@ -87,6 +88,7 @@ const Container = styled.div`
         color: #615858;
         width: 5.5em;
         font-weight: 800;
+        margin-left: 5px;
     }
 
     .class-student {
@@ -101,12 +103,60 @@ const Container = styled.div`
         color: #615858;
         margin-right: 1em;
         font-weight: 800;
+        margin-left: 7px;
+    }
+    .input-bottom{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 18px;
+        color: #615858;
+        margin-right: 1em;
+        font-weight: 800;
+        margin-bottom: 1em;
+    }
+
+    .link-image{
+        margin-right: 10px;
+    }
+
+    .input-large input{
+        width: 556px;
+    }
+
+    .text-area {
+        
+        display: flex;
+        flex-direction: row;
+        font-size: 18px;
+        color: #615858;
+        font-weight: bolder;
+        
+        margin-left: 3px;
+        
+    }
+
+    textarea{
+        background: #FFFFFF;
+        border: 1px solid #A8A8A8;
+        box-sizing: border-box;
+        border-radius: 5px;
+        
+        resize: none;
+        
+    }
+
+    .descricao{
+        display: flex;
+        justify-content: flex-start;
+        margin-right: 15px;
     }
 
 
     .button-create {
         align-self: flex-end;
         justify-self: flex-end;
+        margin-top: 50px;
         padding-bottom: 1.5em;
     }
 
@@ -114,7 +164,7 @@ const Container = styled.div`
         width: 106px;
         height: 36px;
 
-        background: #E911C6;
+        background: #6CC3DF;
         border-radius: 44px;
         border: none;
         color: white;
@@ -221,7 +271,7 @@ const Container = styled.div`
     }
 
     thead {
-        background-color: #986CDF;
+        background-color: #6CC3DF;
     }
 
     table {
