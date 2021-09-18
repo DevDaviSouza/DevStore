@@ -1,10 +1,13 @@
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Cabecalho from '../../components/cabecalho'
 import Menu from '../../components/menu'
 import Api from '../../service/api'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import LoadingBar from 'react-top-loading-bar'
 import { Container, Conteudo } from './styled'
+
 
 const api = new Api();
 export default function Index() {
@@ -25,27 +28,35 @@ export default function Index() {
 
 
     const Listar = async () => {
-
+        loading.current.continuousStart();
         let listar = await api.listar()
+        
         console.log(listar)
         setProduto(listar);
+        loading.current.complete();
     }
+
+    
+
+    const loading = useRef(null);
 
     const Inserir = async () => {
         
         if (idAlterando == 0) {
             let r = await api.inserir(nome, categoria, avaliacao, precode, precopor, estoque, link, descricao);
-            alert('produto inserido')
-            Listar();
+            console.log(r)
+            toast.dark('Produto inserido')
+            Listar()
         } else {
             let r = await api.alterar(idAlterando, nome, categoria, precode, precopor, avaliacao, descricao, estoque, link);
-            alert('produto alterado')
+            toast.dark('produto alterado')
             console.log(r)
-            Listar();
+            Listar()
             limparcampos();
         }
-        
     }
+        
+    
 
     function limparcampos() {
         setIdAlterando(0)
@@ -61,8 +72,14 @@ export default function Index() {
     }
 
     const remover = async (id) => {
-        let r = await api.deletar(id)
+        
+        let certeza = window.confirm('Tem certeza que deseja excluir esse item?')
+        if (certeza == true) {
+            let r = await api.deletar(id)
+        toast.dark('produto removido')
         Listar();
+        }
+        
     }
 
 
@@ -88,6 +105,8 @@ export default function Index() {
     
     return (
         <Container>
+            <ToastContainer />
+            <LoadingBar color="red" ref={loading} />
             <Menu />
             <Conteudo>
                 <Cabecalho />
@@ -96,7 +115,7 @@ export default function Index() {
                         
                         <div class="text-new-student">
                             <div class="bar-new-student"></div>
-                            <div class="text-new-student">Novo Produto</div>
+                            <div class="text-new-student">{idAlterando == 0 ? "Novo produto" : "Alterando produto " + idAlterando}</div>
                         </div>
 
                         <div class="input-new-student"> 
@@ -140,7 +159,7 @@ export default function Index() {
                         <div className="text-area">
                             <div className="descricao"> Descrição: </div>
                             <textarea id="textarea" rows="10" cols="91" value={descricao} onChange={e => setDescricao(e.target.value)}></textarea>
-                            <div class="button-create"> <button onClick={Inserir}> Cadastrar </button> </div>
+                            <div class="button-create"> <button onClick={Inserir}> {idAlterando == 0 ? "Cadastrar" : "alterar"} </button> </div>
                         </div>
                         
                     </div>
@@ -153,7 +172,7 @@ export default function Index() {
                     
                         <table class ="table-user">
                             <thead>
-                                <tr>
+                                <tr className="">
                                     <th> ID </th>
                                     <th> Produto </th>
                                     <th> Categoria </th>
@@ -166,15 +185,15 @@ export default function Index() {
                     
                             <tbody>
 
-                                {produto.map(item => 
-                                    <tr>
+                                {produto.map((item, i) => 
+                                    <tr className={i % 2 == 0 ?"linha-alternada" : "" }>
                                     <td> {item.id_produto} </td>
-                                    <td> {item.nm_produto}</td>
+                                    <td title={item.nm_produto}> {item.nm_produto != null && item.nm_produto.length >= 25 ? item.nm_produto.substr(0, 25) + "..." : item.nm_produto}</td>
                                     <td> {item.ds_categoria} </td>
                                     <td> {item.vl_preco_por} </td>
                                     <td> {item.qtd_estoque} </td>
-                                    <td> <button onClick={() => editar(item)}> <img src="/assets/images/edit.svg" alt="" /> </button> </td>
-                                    <td> <button onClick={() => remover(item.id_produto)}> <img src="/assets/images/trash.svg" alt="" /> </button> </td>
+                                    <td> <button class="coluna-acao" onClick={() => editar(item)}> <img src="/assets/images/edit.svg" alt="" /> </button> </td>
+                                    <td> <button class="coluna-acao" onClick={() => remover(item.id_produto)}> <img src="/assets/images/trash.svg" alt="" /> </button> </td>
                                 </tr>
                                 )}
                                 
