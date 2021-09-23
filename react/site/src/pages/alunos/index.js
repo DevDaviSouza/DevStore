@@ -42,7 +42,7 @@ export default function Index() {
 
     const Inserir = async () => {
         
-        if (idAlterando == 0) {
+        if (idAlterando === 0) {
             let r = await api.inserir(nome, categoria, avaliacao, precode, precopor, estoque, link, descricao);
             console.log(r)
             toast.dark('Produto inserido')
@@ -74,8 +74,8 @@ export default function Index() {
     const remover = async (id) => {
         
         let certeza = window.confirm('Tem certeza que deseja excluir esse item?')
-        if (certeza == true) {
-            let r = await api.deletar(id)
+        if (certeza === true) {
+            await api.deletar(id)
         toast.dark('produto removido')
         Listar();
         }
@@ -115,7 +115,7 @@ export default function Index() {
                         
                         <div class="text-new-student">
                             <div class="bar-new-student"></div>
-                            <div class="text-new-student">{idAlterando == 0 ? "Novo produto" : "Alterando produto " + idAlterando}</div>
+                            <div class="text-new-student">{idAlterando === 0 ? "Novo produto" : "Alterando produto " + idAlterando}</div>
                         </div>
 
                         <div class="input-new-student"> 
@@ -159,7 +159,7 @@ export default function Index() {
                         <div className="text-area">
                             <div className="descricao"> Descrição: </div>
                             <textarea id="textarea" rows="10" cols="91" value={descricao} onChange={e => setDescricao(e.target.value)}></textarea>
-                            <div class="button-create"> <button onClick={Inserir}> {idAlterando == 0 ? "Cadastrar" : "alterar"} </button> </div>
+                            <div class="button-create"> <button onClick={Inserir}> {idAlterando === 0 ? "Cadastrar" : "alterar"} </button> </div>
                         </div>
                         
                     </div>
@@ -186,7 +186,7 @@ export default function Index() {
                             <tbody>
 
                                 {produto.map((item, i) => 
-                                    <tr className={i % 2 == 0 ?"linha-alternada" : "" }>
+                                    <tr className={i % 2 === 0 ?"linha-alternada" : "" }>
                                     <td> {item.id_produto} </td>
                                     <td title={item.nm_produto}> {item.nm_produto != null && item.nm_produto.length >= 25 ? item.nm_produto.substr(0, 25) + "..." : item.nm_produto}</td>
                                     <td> {item.ds_categoria} </td>
